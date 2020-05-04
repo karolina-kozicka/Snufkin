@@ -12,13 +12,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import environ
+import dj_database_url
 
 ROOT_DIR = environ.Path(__file__) - 2  # (app/config/settings.py - 2 = app/)
 APPS_DIR = ROOT_DIR.path("snufkin")
 
 env = environ.Env()
 env.read_env(str(ROOT_DIR.path(".env")))
-
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.gis",
     "snufkin.places",
     "snufkin.trips",
     "snufkin.users",
@@ -85,13 +86,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
-
+DATABASES = {"default": dj_database_url.config()}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -104,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
-
 
 
 # Internationalization
