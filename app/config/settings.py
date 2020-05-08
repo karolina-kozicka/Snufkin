@@ -14,6 +14,9 @@ import os
 import environ
 import dj_database_url
 
+from django.urls import reverse_lazy
+
+
 ROOT_DIR = environ.Path(__file__) - 2  # (app/config/settings.py - 2 = app/)
 APPS_DIR = ROOT_DIR.path("snufkin")
 
@@ -47,6 +50,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.gis",
+    "crispy_forms",
+    'leaflet',
     "snufkin.places",
     "snufkin.trips",
     "snufkin.users",
@@ -114,10 +119,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_URL = "/static/"
-
 AUTH_USER_MODEL = "users.User"
+
+#  STATIC
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#static-root
+STATIC_ROOT = str(ROOT_DIR("staticfiles"))
+# https://docs.djangoproject.com/en/dev/ref/settings/#static-url
+STATIC_URL = "/static/"
+# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
+# https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
+LOGIN_REDIRECT_URL = reverse_lazy("users:home")
+LOGOUT_REDIRECT_URL = reverse_lazy("users:home")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
