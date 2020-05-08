@@ -5,4 +5,10 @@ class HomeView(views.TemplateView):
     template_name = "home.html"
 
 
-# Create your views here.
+class LoginView(views.LoginView):
+    template_name = "users/login.html"
+
+
+class LogoutView(views.LogoutView):
+    template_name = "users/logout.html"
+
