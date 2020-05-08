@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="col-md-12">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <p> Are you sure you want to delete "{{ place.name }}"?</p>
+            <input class="btn btn-secondary" type="submit" value="Yes">
+            <a href="{% url 'places:detail' place.id %}"class="btn btn-outline-secondary" role="button">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

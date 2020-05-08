@@ -1,0 +1,15 @@
+#header {
+    background-color: rgb(58, 62, 113);
+}
+
+#header .nav-link {
+    color: white
+}
+
+.image-logo {
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 100%;
+    
+}

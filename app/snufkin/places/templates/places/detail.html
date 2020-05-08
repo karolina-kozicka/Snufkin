@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load leaflet_tags %}
+
+{% block extra_head %}
+    {% leaflet_js %}
+    {% leaflet_css %}
+{% endblock %}
+
+{% block content %}
+    {% leaflet_map "main" %}
+{% endblock %}
