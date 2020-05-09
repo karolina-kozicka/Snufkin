@@ -1,7 +1,7 @@
 {% load static %}
 
 <div id="header" class="navbar">
-  <a class="nav-link" href="{% url 'users:home' %}">
+  <a class="nav-link no-padding" href="{% url 'users:home' %}">
     <img class="image-logo top-img-round" src="{% static 'images/logo2.png' %}" alt="LOGO"></a>
      
   <ul class="nav justify-content-end">
@@ -14,16 +14,26 @@
         {% else %}
           <span class="nav-link">Nice to see you!</span>
         {% endif%}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'trips:list' %}">Yours trips</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-cog"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'users:password_change' %}">Change password</a>
+            <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Account details</a>
+            </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'places:list' %}">Yours places</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
-          </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'trips:list' %}">Yours trips</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'places:list' %}">Yours places</a>
+         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+        </li>
+          
       {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'users:login' %}">Login</a>

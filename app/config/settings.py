@@ -137,5 +137,9 @@ STATICFILES_FINDERS = [
 
 LOGIN_REDIRECT_URL = reverse_lazy("users:home")
 LOGOUT_REDIRECT_URL = reverse_lazy("users:home")
+LOGIN_URL = reverse_lazy('users:login')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

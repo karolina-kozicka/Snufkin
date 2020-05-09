@@ -2,13 +2,20 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="col-md-12">
+<div  class="card w-50">
+ <div  class="card-body">
+        <div class="text-center">
+            <br>
+            <h2> Delete </h2> 
+            <br> 
         <form method="post">
             {% csrf_token %}
             {{ form|crispy }}
             <p> Are you sure you want to delete "{{ place.name }}"?</p>
-            <input class="btn btn-secondary" type="submit" value="Yes">
-            <a href="{% url 'places:detail' place.id %}"class="btn btn-outline-secondary" role="button">Cancel</a>
+            <input class="btn btn-lg btn-block btn-secondary" type="submit" value="Yes">
+            <a href="{% url 'places:detail' place.id %}"class="btn btn-lg btn-block btn-outline-secondary" role="button">Cancel</a>
         </form>
     </div>
+    </div>
+</div> 
 {% endblock %}

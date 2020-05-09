@@ -2,9 +2,21 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<div  class="card w-50">
+<div  class="card-body">
+<h2 class="text-center"> Login  </h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <input class="btn btn-primary" type="submit" value="Login">
+        <input class="btn btn-lg btn-block btn-secondary" type="submit" value="Login">
     </form>
+    <br>
+    <div class="text-center reset">
+        <a href="{% url 'users:password_reset' %}">Reset password</a>
+    </div>
+    <hr>
+    <h5 class="text-center">Don't have an account?</h5>
+<a href="#" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i> Create account</a>
+</div>
+</div>
 {% endblock %}

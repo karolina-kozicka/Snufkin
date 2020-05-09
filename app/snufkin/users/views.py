@@ -1,4 +1,8 @@
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views import generic
 from django.contrib.auth import views
+from django.contrib.auth import login, authenticate
 
 
 class HomeView(views.TemplateView):
@@ -12,3 +16,31 @@ class LoginView(views.LoginView):
 class LogoutView(views.LogoutView):
     template_name = "users/logout.html"
 
+
+class PasswordResetView(views.PasswordResetView):
+    template_name = "users/password_reset.html"
+    success_url = reverse_lazy("users:password_reset_done")
+    email_template_name = "users/reset_emial.html"
+    subject_template_name = "users/password_reset_subject.txt"
+
+
+class PasswordResetDoneView(views.PasswordResetDoneView):
+    template_name = "users/password_reset_done.html"
+
+
+class PasswordResetConfirmView(views.PasswordResetConfirmView):
+    template_name = "users/password_reset_confirm.html"
+    success_url = reverse_lazy("users:password_reset_complete")
+
+
+class PasswordResetCompleteView(views.PasswordResetCompleteView):
+    template_name = "users/password_reset_complete.html"
+
+
+class PasswordChangeView(views.PasswordChangeView):
+    template_name = "users/password_change.html"
+    success_url = reverse_lazy("users:password_change_done")
+
+
+class PasswordChangeDoneView(views.PasswordChangeDoneView):
+    template_name = "users/password_change_done.html"

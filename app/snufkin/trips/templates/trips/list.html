@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-<div class="col-md-12">
+<div  class="card w-75">
+<div  class="card-body">
     {% if trips %}
+        <div class="text-center">
+            <br>
+            <h2> Yours trips </h2>
+            <br>
+        </div>
         <table class="table table-hover">
         <thead class="thead">
             <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            {% comment %} <th scope="col"></th> {% endcomment %}
+            <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -16,16 +23,16 @@
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{trip.name}}</td>
-                    {% comment %} <td>
-                        <a href="{% url 'trips:detail' trip.id %}" class="btn btn-outline-primary" role="button"><i class="fas fa-map-marked-alt"></i></a>
-                        <a href="{% url 'trips:edit' trip.id %}" class="btn btn-outline-secondary" role="button"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'trips:delete' trip.id %}" class="btn btn-outline-danger" role="button"><i class="fas fa-trash"></i></a>
-                    </td> {% endcomment %}
+                    <td class="text-right">
+                        <a href="#" class="btn btn-outline-primary" role="button"><i class="fas fa-info-circle"></i></a>
+                        <a href="#" class="btn btn-outline-secondary" role="button"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-outline-danger" role="button"><i class="fas fa-trash"></i></a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
         </table>
-    {% comment %} <a href="{% url 'trips:add' %}" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i></a> {% endcomment %}
+    <a href="#" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i></a>
     {% else %}
         <div class="info">
             upps! 
@@ -35,5 +42,6 @@
             You must change it!
         </div>
     {% endif %}
+</div>
 </div>
 {% endblock %}

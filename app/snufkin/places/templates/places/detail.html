@@ -7,5 +7,12 @@
 {% endblock %}
 
 {% block content %}
-    {% leaflet_map "main" %}
+<div class="col-md-12 text-center">
+            <br>
+            <h2>{{place.name}}</h2> 
+            <br>
+    <div class="map">
+        {% leaflet_map "main" %}
+    </div>
+</div>
 {% endblock %}

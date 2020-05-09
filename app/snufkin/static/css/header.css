@@ -6,6 +6,10 @@
     color: white
 }
 
+a.nav-link.no-padding {
+    padding: 0px;
+}
+
 .image-logo {
     height: 70px;
     display: block;

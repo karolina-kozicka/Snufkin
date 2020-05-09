@@ -21,16 +21,14 @@
         {% include "header.html" %}
     {% endblock %}
 
-    {% block full_content %}
-    {% endblock %}
-
-
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            {% block content %}
-            {% endblock %}
+    {% block container %}
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
-    </div>
+    {% endblock %}
 
     {% block footer %}
         {% include "footer.html" %}  
