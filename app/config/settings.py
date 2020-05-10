@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.gis",
+    "django_registration",
     "crispy_forms",
     'leaflet',
     "snufkin.places",
@@ -140,6 +141,8 @@ LOGOUT_REDIRECT_URL = reverse_lazy("users:home")
 LOGIN_URL = reverse_lazy('users:login')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+ACCOUNT_ACTIVATION_DAYS = 10
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

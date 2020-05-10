@@ -3,6 +3,9 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import views
 from django.contrib.auth import login, authenticate
+import django_registration
+
+from .forms import RegisterForm
 
 
 class HomeView(views.TemplateView):
@@ -44,3 +47,17 @@ class PasswordChangeView(views.PasswordChangeView):
 
 class PasswordChangeDoneView(views.PasswordChangeDoneView):
     template_name = "users/password_change_done.html"
+
+
+class RegistrationView(django_registration.backends.activation.views.RegistrationView):
+    template_name = "registration/registration_form.html"
+    form_class = RegisterForm
+    success_url = reverse_lazy("users:registration_complete")
+    disallowed_url = reverse_lazy("users:registration_disallowed")
+    email_body_template = "registration/activation_email_body.txt"
+    email_subject_template = "registration/activation_email_subject.txt"
+
+
+class ActivationView(django_registration.backends.activation.views.ActivationView):
+    template_name = "registration/activation_failed.html"
+    success_url = reverse_lazy("users:registration_activation_complete")
