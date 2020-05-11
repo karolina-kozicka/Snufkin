@@ -1,3 +1,4 @@
+from django.forms import ModelForm
 from django_registration.forms import RegistrationForm
 
 from .models import User
@@ -10,5 +11,5 @@ class RegisterForm(RegistrationForm):
             User.USERNAME_FIELD,
             "name",
             "password1",
-            "password2", 
+            "password2",
         ]

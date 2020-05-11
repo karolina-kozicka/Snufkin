@@ -24,15 +24,15 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{trip.name}}</td>
                     <td class="text-right">
-                        <a href="#" class="btn btn-outline-primary" role="button"><i class="fas fa-info-circle"></i></a>
-                        <a href="#" class="btn btn-outline-secondary" role="button"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-outline-danger" role="button"><i class="fas fa-trash"></i></a>
+                        <a href="{% url 'trips:detail' trip.id %}" class="btn btn-outline-primary" role="button"><i class="fas fa-info-circle"></i></a>
+                        <a href="{% url 'trips:edit' trip.id %}" class="btn btn-outline-secondary" role="button"><i class="fas fa-edit"></i></a>
+                        <a href="{% url 'trips:delete' trip.id %}" class="btn btn-outline-danger" role="button"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
         </table>
-    <a href="#" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i></a>
+    <a href="{% url 'trips:add'%}" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i></a>
     {% else %}
         <div class="info">
             upps! 

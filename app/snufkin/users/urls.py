@@ -35,9 +35,7 @@ urlpatterns = [
     ),
     path(
         "activate/complete/",
-        TemplateView.as_view(
-            template_name="registration/activation_complete.html"
-        ),
+        TemplateView.as_view(template_name="registration/activation_complete.html"),
         name="registration_activation_complete",
     ),
     path(
@@ -45,23 +43,16 @@ urlpatterns = [
         views.ActivationView.as_view(),
         name="registration_activate",
     ),
-    path(
-        "register/",
-        views.RegistrationView.as_view(),
-        name="registration_register",
-    ),
+    path("register/", views.RegistrationView.as_view(), name="registration_register",),
     path(
         "register/complete/",
-        TemplateView.as_view(
-            template_name="registration/registration_complete.html"
-        ),
+        TemplateView.as_view(template_name="registration/registration_complete.html"),
         name="registration_complete",
     ),
     path(
         "register/closed/",
-        TemplateView.as_view(
-            template_name="registration/registration_closed.html"
-        ),
+        TemplateView.as_view(template_name="registration/registration_closed.html"),
         name="registration_disallowed",
     ),
+    path("account/edit/", views.EditView.as_view(), name="edit"),
 ]

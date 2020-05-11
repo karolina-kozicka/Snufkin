@@ -4,17 +4,17 @@
 {% block content %}
 <div  class="card w-50">
     <div  class="card-body">
-        <div class="text-center">
-            <br>
-            <h2>Add trip</h2> 
-            <br> 
-        </div>
+            <div class="text-center">
+                <br>
+                <h2>Add trip</h2> 
+                <br> 
+            </div>
         <form method="post">
             {% csrf_token %}
             {{ form|crispy }}
             <input class="btn btn-lg btn-block btn-secondary" type="submit" value="Save">
-            <a href="{% url 'trips:list'%}"class="btn btn-lg btn-block btn-outline-secondary" role="button">Cancel</a>
-         </form>
+            <a href="{% url 'trips:list' %}"class="btn btn-lg btn-block btn-outline-secondary" role="button">Cancel</a>
+        </form>
     </div>
 </div>
 {% endblock %}

@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.gis",
     "django_registration",
     "crispy_forms",
-    'leaflet',
+    "leaflet",
     "snufkin.places",
     "snufkin.trips",
     "snufkin.users",
@@ -126,10 +126,13 @@ AUTH_USER_MODEL = "users.User"
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
 STATIC_ROOT = str(ROOT_DIR("staticfiles"))
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
+
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
+
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -137,12 +140,14 @@ STATICFILES_FINDERS = [
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy("users:home")
-LOGOUT_REDIRECT_URL = reverse_lazy("users:home")
-LOGIN_URL = reverse_lazy('users:login')
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGOUT_REDIRECT_URL = reverse_lazy("users:home")
+
+LOGIN_URL = reverse_lazy("users:login")
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 ACCOUNT_ACTIVATION_DAYS = 10
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

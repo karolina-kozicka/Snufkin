@@ -3,9 +3,11 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import views
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 import django_registration
 
 from .forms import RegisterForm
+from .models import User
 
 
 class HomeView(views.TemplateView):
@@ -40,12 +42,12 @@ class PasswordResetCompleteView(views.PasswordResetCompleteView):
     template_name = "users/password_reset_complete.html"
 
 
-class PasswordChangeView(views.PasswordChangeView):
+class PasswordChangeView(LoginRequiredMixin, views.PasswordChangeView):
     template_name = "users/password_change.html"
     success_url = reverse_lazy("users:password_change_done")
 
 
-class PasswordChangeDoneView(views.PasswordChangeDoneView):
+class PasswordChangeDoneView(LoginRequiredMixin, views.PasswordChangeDoneView):
     template_name = "users/password_change_done.html"
 
 
@@ -61,3 +63,13 @@ class RegistrationView(django_registration.backends.activation.views.Registratio
 class ActivationView(django_registration.backends.activation.views.ActivationView):
     template_name = "registration/activation_failed.html"
     success_url = reverse_lazy("users:registration_activation_complete")
+
+
+class EditView(LoginRequiredMixin, generic.UpdateView):
+    template_name = "users/edit_name.html"
+    model = User
+    fields = ("name",)
+    success_url = reverse_lazy("users:edit")
+
+    def get_object(self, queryset=None):
+        return self.request.user

@@ -10,7 +10,7 @@ class Trip(models.Model):
     user = models.ForeignKey(
         "users.User", related_name="trips", on_delete=models.CASCADE,
     )
-    place = models.ManyToManyField("places.Place", related_name="trips")
+    places = models.ManyToManyField("places.Place", related_name="trips")
 
     class Meta:
         unique_together = ["name", "user"]
