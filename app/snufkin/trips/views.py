@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models
+from . import forms
 
 
 class TripsListView(LoginRequiredMixin, generic.ListView):
@@ -21,16 +22,25 @@ class TripsDeleteView(LoginRequiredMixin, generic.DeleteView):
 class TripsAddView(LoginRequiredMixin, generic.CreateView):
     template_name = "trips/add.html"
     model = models.Trip
-    fields = ("name", "description", "start_date", "end_date", "places")
-    # TODO form_class
+    form_class = forms.TripForm
     success_url = reverse_lazy("trips:list")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
 
 
 class TripsEditView(LoginRequiredMixin, generic.UpdateView):
     template_name = "trips/edit.html"
     model = models.Trip
-    fields = ("name", "description", "start_date", "end_date", "places")
+    form_class = forms.TripForm
     success_url = reverse_lazy("trips:list")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
 
 
 class TripsDeleteView(LoginRequiredMixin, generic.DeleteView):
