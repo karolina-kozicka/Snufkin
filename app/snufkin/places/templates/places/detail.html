@@ -4,15 +4,29 @@
 {% block extra_head %}
     {% leaflet_js %}
     {% leaflet_css %}
+
+    <script type="text/javascript">
+        window.addEventListener("map:init", function (e) {
+            const detail = e.detail;
+            const point_y = {{place.point.y}};
+            const point_x = {{place.point.x}};
+            detail.map.setView([point_y, point_x], 10);
+            L.marker([point_y, point_x]).addTo(detail.map);
+        }, false);
+    </script>
 {% endblock %}
 
 {% block content %}
-<div class="col-md-12 text-center">
+<div  class="card w-50">
+    <div  class="card-body">
+        <div class="text-center">
             <br>
             <h2>{{place.name}}</h2> 
             <br>
-    <div class="map">
-        {% leaflet_map "main" %}
+        </div>
+        <div class="map">
+            {% leaflet_map "main" %}
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models
+from . import forms
 
 
 class PlacesListView(LoginRequiredMixin, generic.ListView):
@@ -21,22 +22,25 @@ class PlacesDetailView(LoginRequiredMixin, generic.DetailView):
 class PlacesAddView(LoginRequiredMixin, generic.CreateView):
     template_name = "places/add.html"
     model = models.Place
-    fields = (
-        "name",
-        "point",
-    )
-    # TODO form_class
+    form_class = forms.PlaceForm
     success_url = reverse_lazy("places:list")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
 
 
 class PlacesEditView(LoginRequiredMixin, generic.UpdateView):
     template_name = "places/edit.html"
     model = models.Place
-    fields = (
-        "name",
-        "point",
-    )
+    form_class = forms.PlaceForm
     success_url = reverse_lazy("places:list")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
 
 
 class PlacesDeleteView(LoginRequiredMixin, generic.DeleteView):

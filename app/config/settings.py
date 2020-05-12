@@ -151,3 +151,7 @@ ACCOUNT_ACTIVATION_DAYS = 10
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+LEAFLET_CONFIG = {
+    "MIN_ZOOM": 3,
+    "MAX_ZOOM": 14,
+}
