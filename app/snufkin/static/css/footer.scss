@@ -1,0 +1,38 @@
+#footer {
+  background-color: rgb(169, 187, 204);
+
+  .quotation {
+    font-family: "Indie Flower", cursive;
+  }
+  
+  .name {
+    font-family: "Indie Flower", cursive;
+    font-size: 22px;
+  }
+  
+  .book {
+    font-family: "Indie Flower", cursive;
+    font-size: 15px;
+  }
+
+  .footer-copyright {
+    background-color: rgb(58, 62, 113);
+    color: white;
+    position: relative;
+  
+    a {
+      color: rgb(169, 187, 204);
+    }
+  }
+
+  .back-to-top {
+    position: absolute;
+    right: 32px;
+  }
+  
+  .text-center.footer {
+    margin-bottom: 0px;
+  }
+}
+
+

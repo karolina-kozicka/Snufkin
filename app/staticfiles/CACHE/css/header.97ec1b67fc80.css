@@ -1,0 +1,15 @@
+/* line 1, app/snufkin/static/css/header.scss */
+#header {
+  background-color: #3a3e71; }
+  /* line 4, app/snufkin/static/css/header.scss */
+  #header .nav-link {
+    color: white; }
+  /* line 8, app/snufkin/static/css/header.scss */
+  #header a.nav-link.no-padding {
+    padding: 0px; }
+  /* line 12, app/snufkin/static/css/header.scss */
+  #header .image-logo {
+    height: 70px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 100%; }

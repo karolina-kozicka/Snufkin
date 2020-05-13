@@ -1,0 +1,27 @@
+/* line 1, app/snufkin/static/css/general.scss */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #fff4db; }
+
+/* line 6, app/snufkin/static/css/general.scss */
+.container {
+  padding: 50px; }
+
+/* line 10, app/snufkin/static/css/general.scss */
+.float-right {
+  padding-right: 32px; }
+
+/* line 14, app/snufkin/static/css/general.scss */
+.thead {
+  background-color: #a9bbcc; }
+
+/* line 18, app/snufkin/static/css/general.scss */
+.carousel-img {
+  object-fit: cover;
+  object-position: 0 65%;
+  width: 100%;
+  height: 500px; }
+
+/* line 26, app/snufkin/static/css/general.scss */
+.reset a {
+  color: #a9bbcc; }

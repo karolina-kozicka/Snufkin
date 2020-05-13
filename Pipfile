@@ -16,6 +16,8 @@ django-environ = "==0.4.5"
 dj-database-url = "==0.5.0"
 django-leaflet = "==0.26.0"
 django-registration = "==3.1"
+django-compressor = "==2.4"
+django-libsass = "==0.8"
 
 [requires]
 python_version = "3.8"

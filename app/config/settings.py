@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.gis",
+    "compressor",
     "django_registration",
     "crispy_forms",
     "leaflet",
@@ -137,7 +138,13 @@ STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
 ]
+
+# COMPRESSOR SETTINGS
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 LOGIN_REDIRECT_URL = reverse_lazy("users:home")
 
