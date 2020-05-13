@@ -1,11 +1,14 @@
-#header {
+header {
   background-color: rgb(58, 62, 113);
 
   .nav-link {
-    color: white;
+    color: white !important;
+    &:hover {
+      color: rgb(255, 244, 219) !important;
+    }
   }
 
-  a.nav-link.no-padding {
+  .no-padding {
     padding: 0px;
   }
 

@@ -11,3 +11,6 @@ __pycache__/
 
 # Env
 .env
+
+# Staticfiles
+app/staticfiles

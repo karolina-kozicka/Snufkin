@@ -1,46 +1,56 @@
+{% load i18n %}
+
 {% load static %}
 
-<div id="header" class="navbar">
-  <a class="nav-link no-padding" href="{% url 'users:home' %}">
-    <img class="image-logo top-img-round" src="{% static 'images/logo2.png' %}" alt="LOGO"></a>
-     
-  <ul class="nav justify-content-end">
-    <li class="nav-item">
-
-      {% if request.user.is_authenticated %}
-
-        {% if request.user.name %}
-          <span class="nav-link">Nice to see you,  {{request.user.name}}!</span>
-        {% else %}
-          <span class="nav-link">Nice to see you!</span>
-        {% endif%}
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-cog"></i>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'users:password_change' %}">Change password</a>
-            <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'users:edit'%}">Edit account details</a>
-            </div>
-          </li>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a class="navbar-brand no-padding" href="{% url 'users:home' %}">
+      <img class="image-logo top-img-round" src="{% static 'images/logo2.png' %}" alt="Snufkin" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto"></ul>
+      <ul class="navbar-nav mt-2 mt-md-0">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'trips:list' %}">Yours trips</a>
+
+          {% if request.user.is_authenticated %}
+
+            {% if request.user.name %}
+              <span class="nav-link">Nice to see you,  {{request.user.name}}!</span>
+            {% else %}
+              <span class="nav-link">Nice to see you!</span>
+            {% endif%}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-cog"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'users:password_change' %}">Change password</a>
+                <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{% url 'users:edit'%}">Edit account details</a>
+                </div>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'trips:list' %}">Yours trips</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'places:list' %}">Yours places</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+            </li>
+              
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+            </li>
+
+          {% endif%}
+
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'places:list' %}">Yours places</a>
-         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
-        </li>
-          
-      {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'users:login' %}">Login</a>
-        </li>
-
-      {% endif%}
-
-     </li>
-  </ul>
-</div>
+      </ul>
+    </div>
+  </nav>
+</header>

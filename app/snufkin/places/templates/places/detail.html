@@ -17,8 +17,9 @@
 {% endblock %}
 
 {% block content %}
-<div  class="card w-50">
+<div  class="card w-75">
     <div  class="card-body">
+        <div class="back"><a href="{% url 'places:list'%}">Back</a></div>
         <div class="text-center">
             <br>
             <h2>{{place.name}}</h2> 
