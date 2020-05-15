@@ -33,6 +33,11 @@
 
     {% block container %}
         <div class="container">
+                {% for message in messages %}
+                <div class="text-center alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
             <div class="row d-flex justify-content-center">
                 {% block content %}
                 {% endblock %}

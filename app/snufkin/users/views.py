@@ -5,6 +5,7 @@ from django.contrib.auth import views
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django_registration.backends.activation import views as django_registration_views
+from django.contrib import messages
 
 from .forms import RegisterForm
 from .models import User
@@ -24,31 +25,39 @@ class LogoutView(views.LogoutView):
 
 class PasswordResetView(views.PasswordResetView):
     template_name = "users/password_reset.html"
-    success_url = reverse_lazy("users:password_reset_done")
+    success_url = reverse_lazy("users:password_reset")
     email_template_name = "users/reset_emial.html"
     subject_template_name = "users/password_reset_subject.txt"
 
-
-class PasswordResetDoneView(views.PasswordResetDoneView):
-    template_name = "users/password_reset_done.html"
+    def form_valid(self, form):
+        messages.add_message(
+            self.request,
+            messages.SUCCESS,
+            "The email with further instructions was sent to the submitted email address. If you don’t receive a message in 5 minutes, check the junk folder.",
+        )
+        return super().form_valid(form)
 
 
 class PasswordResetConfirmView(views.PasswordResetConfirmView):
     template_name = "users/password_reset_confirm.html"
-    success_url = reverse_lazy("users:password_reset_complete")
+    success_url = reverse_lazy("users:login")
 
-
-class PasswordResetCompleteView(views.PasswordResetCompleteView):
-    template_name = "users/password_reset_complete.html"
+    def form_valid(self, form):
+        messages.add_message(
+            self.request, messages.SUCCESS, "Password has been reset successfully!"
+        )
+        return super().form_valid(form)
 
 
 class PasswordChangeView(LoginRequiredMixin, views.PasswordChangeView):
     template_name = "users/password_change.html"
-    success_url = reverse_lazy("users:password_change_done")
+    success_url = reverse_lazy("users:password_change")
 
-
-class PasswordChangeDoneView(LoginRequiredMixin, views.PasswordChangeDoneView):
-    template_name = "users/password_change_done.html"
+    def form_valid(self, form):
+        messages.add_message(
+            self.request, messages.SUCCESS, "Password has been changed successfully!"
+        )
+        return super().form_valid(form)
 
 
 class RegistrationView(django_registration_views.RegistrationView):
@@ -73,3 +82,11 @@ class EditView(LoginRequiredMixin, generic.UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def form_valid(self, form):
+        messages.add_message(
+            self.request,
+            messages.SUCCESS,
+            "Account details have been changed successfully!",
+        )
+        return super().form_valid(form)
