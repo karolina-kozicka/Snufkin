@@ -25,7 +25,8 @@
     {% endblock %}
 </head>
 
-<body>
+<body class="d-flex flex-column">
+    <div id="page-content">
     {% block header %}
         {% include "header.html" %}
     {% endblock %}
@@ -38,6 +39,7 @@
             </div>
         </div>
     {% endblock %}
+    </div>
 
     {% block footer %}
         {% include "footer.html" %}  
