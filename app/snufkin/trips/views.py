@@ -12,11 +12,17 @@ class TripsListView(LoginRequiredMixin, generic.ListView):
     model = models.Trip
     context_object_name = "trips"
 
+    def get_queryset(self):
+        return self.model.objects.filter(user=self.request.user)
+
 
 class TripsDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = "trips/delete.html"
     model = models.Trip
     success_url = reverse_lazy("trips:list")
+
+    def get_queryset(self):
+        return self.model.objects.filter(user=self.request.user)
 
 
 class TripsAddView(LoginRequiredMixin, generic.CreateView):
@@ -24,6 +30,9 @@ class TripsAddView(LoginRequiredMixin, generic.CreateView):
     model = models.Trip
     form_class = forms.TripForm
     success_url = reverse_lazy("trips:list")
+
+    def get_queryset(self):
+        return self.model.objects.filter(user=self.request.user)
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -37,6 +46,9 @@ class TripsEditView(LoginRequiredMixin, generic.UpdateView):
     form_class = forms.TripForm
     success_url = reverse_lazy("trips:list")
 
+    def get_queryset(self):
+        return self.model.objects.filter(user=self.request.user)
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs["user"] = self.request.user
@@ -48,9 +60,14 @@ class TripsDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = models.Trip
     success_url = reverse_lazy("trips:list")
 
+    def get_queryset(self):
+        return self.model.objects.filter(user=self.request.user)
+
 
 class TripsDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = "trips/detail.html"
     model = models.Trip
     context_object_name = "trip"
 
+    def get_queryset(self):
+        return self.model.objects.filter(user=self.request.user)

@@ -4,7 +4,7 @@ from django.views import generic
 from django.contrib.auth import views
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-import django_registration
+from django_registration.backends.activation import views as django_registration_views
 
 from .forms import RegisterForm
 from .models import User
@@ -51,7 +51,7 @@ class PasswordChangeDoneView(LoginRequiredMixin, views.PasswordChangeDoneView):
     template_name = "users/password_change_done.html"
 
 
-class RegistrationView(django_registration.backends.activation.views.RegistrationView):
+class RegistrationView(django_registration_views.RegistrationView):
     template_name = "registration/registration_form.html"
     form_class = RegisterForm
     success_url = reverse_lazy("users:registration_complete")
@@ -60,7 +60,7 @@ class RegistrationView(django_registration.backends.activation.views.Registratio
     email_subject_template = "registration/activation_email_subject.txt"
 
 
-class ActivationView(django_registration.backends.activation.views.ActivationView):
+class ActivationView(django_registration_views.ActivationView):
     template_name = "registration/activation_failed.html"
     success_url = reverse_lazy("users:registration_activation_complete")
 
