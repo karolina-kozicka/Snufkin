@@ -10,7 +10,7 @@ class PlaceFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Place
 
-    name = factory.Sequence(lambda n: "Place {n}")
+    name = factory.Sequence(lambda n: f"Place {n}")
     point = factory.LazyFunction(
         lambda: Point(random.uniform(-180, 180), random.uniform(-90, 90))
     )

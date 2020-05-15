@@ -14,3 +14,6 @@ class Place(models.Model):
 
     def __str__(self):
         return self.name
+
+    def has_trip(self):
+        return self.trips.exists()

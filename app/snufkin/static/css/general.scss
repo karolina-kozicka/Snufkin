@@ -31,6 +31,10 @@ body {
 .carousel-text {
   text-shadow: 0 0 10px black;
 }
-td.symbol{
+td.symbol {
   width: 40px;
+}
+.td-badge {
+  display: flex;
+  justify-content: space-between;
 }

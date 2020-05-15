@@ -43,3 +43,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    def last_trip(self):
+        return self.trips.order_by("start_date").last()

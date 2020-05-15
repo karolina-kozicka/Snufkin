@@ -17,3 +17,6 @@ class Trip(models.Model):
 
     def __str__(self):
         return self.name
+
+    def duration(self):
+        return self.end_date - self.start_date

@@ -9,10 +9,10 @@ class TripFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.Trip
 
-    name = factory.Sequence(lambda n: "Trip {n}")
-    description = factory.Sequence(lambda n: "Trip description {n}")
-    start_date = datetime.date.today() - datetime.timedelta(day=10)
-    end_date = datetime.date.today() - datetime.timedelta(day=1)
+    name = factory.Sequence(lambda n: f"Trip {n}")
+    description = factory.Sequence(lambda n: f"Trip description {n}")
+    start_date = datetime.date.today() - datetime.timedelta(days=10)
+    end_date = datetime.date.today() - datetime.timedelta(days=1)
     user = factory.SubFactory(UserFactory)
 
     @factory.post_generation

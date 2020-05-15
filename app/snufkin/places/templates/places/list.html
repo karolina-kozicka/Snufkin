@@ -24,7 +24,7 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{place.name}}</td>
                     <td>
-                        {% if place.trips.exists %}
+                        {% if place.has_trip %}
                             <i class="fas fa-check-circle"></i>
                         {% else %}
                                 <i class="fas fa-times-circle"></i>

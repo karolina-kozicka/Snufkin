@@ -15,6 +15,7 @@
             <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Duration (days)</th>
             <th scope="col"></th>
             </tr>
         </thead>
@@ -22,7 +23,11 @@
             {% for trip in trips %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{trip.name}}</td>
+                    <td class="td-badge">
+                        <span>{{trip.name}}</span>
+                        {% if request.user.last_trip == trip %}<span class="badge badge-pill badge-secondary">last trip</span>{% endif %}
+                    </td>
+                    <td>{{ trip.duration.days }}</td>
                     <td class="text-right">
                         <a href="{% url 'trips:detail' trip.id %}" class="btn btn-outline-primary" role="button"><i class="fas fa-info-circle"></i></a>
                         <a href="{% url 'trips:edit' trip.id %}" class="btn btn-outline-secondary" role="button"><i class="fas fa-edit"></i></a>
