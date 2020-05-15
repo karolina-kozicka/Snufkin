@@ -14,3 +14,5 @@ __pycache__/
 
 # Staticfiles
 app/staticfiles
+
+.DS_Store
