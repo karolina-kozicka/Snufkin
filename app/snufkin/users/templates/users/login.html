@@ -3,20 +3,20 @@
 
 {% block content %}
 <div  class="card w-75">
-<div  class="card-body">
-<h2 class="text-center"> Login  </h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input class="btn btn-lg btn-block btn-secondary" type="submit" value="Login">
-    </form>
-    <br>
-    <div class="text-center reset">
-        <a href="{% url 'users:password_reset' %}">Reset password</a>
+    <div  class="card-body">
+        <h2 class="text-center">Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-lg btn-block btn-secondary" type="submit" value="Login">
+        </form>
+        <br>
+        <div class="text-center reset">
+            <a href="{% url 'users:password_reset' %}">Reset password</a>
+        </div>
+        <hr>
+        <h5 class="text-center">Don't have an account?</h5>
+        <a href="#" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i> Create account</a>
     </div>
-    <hr>
-    <h5 class="text-center">Don't have an account?</h5>
-<a href="#" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i> Create account</a>
-</div>
 </div>
 {% endblock %}

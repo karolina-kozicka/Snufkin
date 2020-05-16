@@ -1,52 +1,51 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-<div  class="card w-75">
-<div  class="card-body">
-    {% if trips %}
-        <div class="text-center">
-            <br>
-            <h2> Yours trips </h2>
-            <br>
-        </div>
-        <table class="table table-hover">
-        <thead class="thead">
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Duration (days)</th>
-            <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for trip in trips %}
-                <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td class="td-badge">
-                        <span>{{trip.name}}</span>
-                        {% if request.user.last_trip == trip %}<span class="badge badge-pill badge-secondary">last trip</span>{% endif %}
-                    </td>
-                    <td>{{ trip.duration.days }}</td>
-                    <td class="text-right">
-                        <a href="{% url 'trips:detail' trip.id %}" class="btn btn-outline-primary" role="button"><i class="fas fa-info-circle"></i></a>
-                        <a href="{% url 'trips:edit' trip.id %}" class="btn btn-outline-secondary" role="button"><i class="fas fa-edit"></i></a>
-                        <a href="{% url 'trips:delete' trip.id %}" class="btn btn-outline-danger" role="button"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-        </table>
-    <a href="{% url 'trips:add'%}" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i></a>
-    {% else %}
-        <div class="info">
-            upps! 
-            <br>
-            It is incredible but you have no trips in directory
-            <br>
-            You must change it!
-        </div>
-    {% endif %}
-</div>
+<div class="card w-75">
+    <div class="card-body">
+        {% if trips %}
+            <div class="text-center">
+                <br>
+                <h2>Yours trips</h2>
+                <br>
+            </div>
+            <table class="table table-hover">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Duration (days)</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for trip in trips %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td class="td-badge">
+                                <span>{{trip.name}}</span>
+                                {% if request.user.last_trip == trip %}<span class="badge badge-pill badge-secondary">last trip</span>{% endif %}
+                            </td>
+                            <td>{{ trip.duration.days }}</td>
+                            <td class="text-right">
+                                <a href="{% url 'trips:detail' trip.id %}" class="btn btn-outline-primary" role="button"><i class="fas fa-info-circle"></i></a>
+                                <a href="{% url 'trips:edit' trip.id %}" class="btn btn-outline-secondary" role="button"><i class="fas fa-edit"></i></a>
+                                <a href="{% url 'trips:delete' trip.id %}" class="btn btn-outline-danger" role="button"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <a href="{% url 'trips:add'%}" class="btn btn-lg btn-block btn-outline-secondary" role="button"><i class="fas fa-plus"></i></a>
+        {% else %}
+            <div class="info">
+                upps! 
+                <br>
+                It is incredible but you have no trips in directory
+                <br>
+                You must change it!
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

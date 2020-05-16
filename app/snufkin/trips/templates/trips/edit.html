@@ -2,19 +2,19 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div  class="card w-75">
-    <div  class="card-body">
+<div class="card w-75">
+    <div class="card-body">
         <div class="text-center">
             <br>
-            <h2> Edit trip </h2> 
-            <h5>{{trip.name}}</h5>
+            <h2>Edit trip</h2> 
+            <h5>{{ trip.name }}</h5>
             <br> 
         </div>
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <input class="btn btn-lg btn-block btn-secondary" type="submit" value="Save">
-            </form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-lg btn-block btn-secondary" type="submit" value="Save">
+        </form>
     </div>
 </div>
 {% endblock %}

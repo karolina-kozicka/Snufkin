@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block container %}
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -16,6 +15,7 @@
             <h2 class="carousel-text">Yours places</h2>
         </div>
     </div>
+
     <div class="carousel-item">
       <img class="carousel-img d-block w-100" src="{% static 'images/traveler.png' %}" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
@@ -34,5 +34,4 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
 {% endblock %}

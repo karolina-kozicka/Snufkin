@@ -2,13 +2,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div  class="card w-75">
-    <div  class="card-body">
-            <div class="text-center">
-                <br>
-                <h2>Add trip</h2> 
-                <br> 
-            </div>
+<div class="card w-75">
+    <div class="card-body">
+        <div class="text-center">
+            <br>
+            <h2>Add trip</h2> 
+            <br> 
+        </div>
         <form method="post">
             {% csrf_token %}
             {{ form|crispy }}

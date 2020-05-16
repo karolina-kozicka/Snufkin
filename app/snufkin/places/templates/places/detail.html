@@ -10,6 +10,7 @@
             const detail = e.detail;
             const point_y = {{place.point.y}};
             const point_x = {{place.point.x}};
+
             detail.map.setView([point_y, point_x], 10);
             L.marker([point_y, point_x]).addTo(detail.map);
         }, false);
@@ -17,8 +18,8 @@
 {% endblock %}
 
 {% block content %}
-<div  class="card w-75">
-    <div  class="card-body">
+<div class="card w-75">
+    <div class="card-body">
         <div class="back"><a href="{% url 'places:list'%}">Back</a></div>
         <div class="text-center">
             <br>
