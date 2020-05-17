@@ -63,16 +63,27 @@ class PasswordChangeView(LoginRequiredMixin, views.PasswordChangeView):
 class RegistrationView(django_registration_views.RegistrationView):
     template_name = "registration/registration_form.html"
     form_class = RegisterForm
-    success_url = reverse_lazy("users:registration_complete")
+    success_url = reverse_lazy("users:registration_register")
     disallowed_url = reverse_lazy("users:registration_disallowed")
     email_body_template = "registration/activation_email_body.txt"
     email_subject_template = "registration/activation_email_subject.txt"
 
+    def form_valid(self, form):
+        messages.add_message(
+            self.request, messages.SUCCESS, "The email with further instructions was sent to the submitted email address. If you don’t receive a message in 5 minutes, check the spam folder."
+        )
+        return super().form_valid(form)
+
 
 class ActivationView(django_registration_views.ActivationView):
     template_name = "registration/activation_failed.html"
-    success_url = reverse_lazy("users:registration_activation_complete")
+    success_url = reverse_lazy("users:login")
 
+    def get_success_url(self, *args, **kwargs):
+        messages.add_message(
+            self.request, messages.SUCCESS, "Your account has been activated successfully. Have fun using Snufkin!"
+        )
+        return super().get_success_url(*args, **kwargs)
 
 class EditView(LoginRequiredMixin, generic.UpdateView):
     template_name = "users/edit_name.html"

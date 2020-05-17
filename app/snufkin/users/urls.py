@@ -19,21 +19,11 @@ urlpatterns = [
         "password-change/", views.PasswordChangeView.as_view(), name="password_change"
     ),
     path(
-        "activate/complete/",
-        TemplateView.as_view(template_name="registration/activation_complete.html"),
-        name="registration_activation_complete",
-    ),
-    path(
         "activate/<str:activation_key>/",
         views.ActivationView.as_view(),
         name="registration_activate",
     ),
     path("register/", views.RegistrationView.as_view(), name="registration_register",),
-    path(
-        "register/complete/",
-        TemplateView.as_view(template_name="registration/registration_complete.html"),
-        name="registration_complete",
-    ),
     path(
         "register/closed/",
         TemplateView.as_view(template_name="registration/registration_closed.html"),
