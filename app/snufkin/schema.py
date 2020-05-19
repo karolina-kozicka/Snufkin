@@ -11,4 +11,9 @@ class Query(places_schema.Query, trips_schema.Query, users_schema.Query):
     debug = graphene.Field(DjangoDebug, name="_debug")
 
 
-schema = graphene.Schema(query=Query,)
+class Mutation(trips_schema.Mutation, graphene.ObjectType):
+    pass
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
+
