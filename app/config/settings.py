@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "graphene_django",
     "django.contrib.gis",
     "compressor",
     "django_registration",
@@ -142,9 +143,7 @@ STATICFILES_FINDERS = [
 ]
 
 # COMPRESSOR SETTINGS
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
+COMPRESS_PRECOMPILERS = (("text/x-scss", "django_libsass.SassCompiler"),)
 
 LOGIN_REDIRECT_URL = reverse_lazy("users:home")
 
